@@ -345,6 +345,7 @@ def addresultsView(request):
     print(count)
     print(count[0][0])
     index = count[0][0] + 100000
+    total = count[0][0]
     
     sql = "INSERT INTO dbo.nba_shots_cleaned VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     val = (index, request.POST['LOCATION'], request.POST['PERIOD'], request.POST['SHOT_CLOCK'], request.POST['TOUCH_TIME'], request.POST['SHOT_DIST'], request.POST['PTS_TYPE'], request.POST['CLOSEST_DEFENDER'], request.POST['CLOSEST_DEFENDER_PLAYER_ID'], request.POST['CLOSE_DEF_DIST'], request.POST['FGM'], request.POST['player_name'], request.POST['player_id'], request.POST['Player_Team'], request.POST['Defender_Team'], request.POST['Month'], request.POST['GAME_CLOCK_TOTAL_SECONDS'], request.POST['DRIBBLEScr'], request.POST['SHOT_NUMBERln'])
@@ -381,4 +382,4 @@ def addresultsView(request):
 
 
 
-    return render(request, "addresults.html", {"result": result}) # this path assumes that this file is in the root directory in a folder named templates
+    return render(request, "addresults.html", {"result": result, "total": total}) # this path assumes that this file is in the root directory in a folder named templates
