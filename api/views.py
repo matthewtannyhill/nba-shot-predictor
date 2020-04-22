@@ -330,27 +330,27 @@ def addresultsView(request):
 
     # Using pyodbc
 
-    # import pyodbc
+    import pyodbc
 
-    # server = 'nbashots.database.windows.net'
-    # database = 'nbashotsdb'
-    # username = 'group2-4'
-    # password = 'Rootbeer24'
-    # driver= '{ODBC Driver 17 for SQL Server}'
-    # cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
-    # cursor = cnxn.cursor()
+    server = 'nbashots.database.windows.net'
+    database = 'nbashotsdb'
+    username = 'group2-4'
+    password = 'Rootbeer24'
+    driver= '{ODBC Driver 17 for SQL Server}'
+    cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
+    cursor = cnxn.cursor()
 
-    # cursor.execute("SELECT COUNT(*) FROM dbo.nba_shots_cleaned")  
-    # count = list(cursor)
-    # print(count)
-    # print(count[0][0])
-    # index = count[0][0] + 100000
+    cursor.execute("SELECT COUNT(*) FROM dbo.nba_shots_cleaned")  
+    count = list(cursor)
+    print(count)
+    print(count[0][0])
+    index = count[0][0] + 100000
     
-    # #sql = "INSERT INTO dbo.nba_shots_cleaned VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    # val = (index, request.POST['LOCATION'], request.POST['PERIOD'], request.POST['SHOT_CLOCK'], request.POST['TOUCH_TIME'], request.POST['SHOT_DIST'], request.POST['PTS_TYPE'], request.POST['CLOSEST_DEFENDER'], request.POST['CLOSEST_DEFENDER_PLAYER_ID'], request.POST['CLOSE_DEF_DIST'], request.POST['FGM'], request.POST['player_name'], request.POST['player_id'], request.POST['Player_Team'], request.POST['Defender_Team'], request.POST['Month'], request.POST['GAME_CLOCK_TOTAL_SECONDS'], request.POST['DRIBBLEScr'], request.POST['SHOT_NUMBERln'])
-    # cursor.execute(sql, val)
+    sql = "INSERT INTO dbo.nba_shots_cleaned VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    val = (index, request.POST['LOCATION'], request.POST['PERIOD'], request.POST['SHOT_CLOCK'], request.POST['TOUCH_TIME'], request.POST['SHOT_DIST'], request.POST['PTS_TYPE'], request.POST['CLOSEST_DEFENDER'], request.POST['CLOSEST_DEFENDER_PLAYER_ID'], request.POST['CLOSE_DEF_DIST'], request.POST['FGM'], request.POST['player_name'], request.POST['player_id'], request.POST['Player_Team'], request.POST['Defender_Team'], request.POST['Month'], request.POST['GAME_CLOCK_TOTAL_SECONDS'], request.POST['DRIBBLEScr'], request.POST['SHOT_NUMBERln'])
+    cursor.execute(sql, val)
      
-    # cnxn.commit()
+    cnxn.commit()
 
 
 
