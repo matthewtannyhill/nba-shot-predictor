@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+​
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <style>
+        .center {
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            display: block;
+        }
+
+        .bg-primary {
+            background-color: #63b5e1;
+        }
+
+        .btn-primary {
+            background-color: #63b5e1;
+            border-color: #63b5e1;
+        }
+
+        .primary {
+            background-color: #63b5e1;
+        }
+
+        .bg-primary {
+            background-color: #63b5e1 !important;
+        }
+
+        .bg-secondary {
+            background-color: #d4e6f5 !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #42A5DB !important;
+        }
+    </style>
+</head>
+​
+
+<body>
+    <!--Header-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary"
+        style="position: absolute; height: 60px; left: 0px; right: 0px; top: 0px;">
+        <a href="/nbahome" class="navbar-brand">
+            <img alt="Site Icon" src="https://www.stickpng.com/assets/images/58428defa6515b1e0ad75ab4.png" width="30px">
+            NBA Shot Predictor
+        </a>
+        <button aria-controls="basic-navbar-nav" type="button" aria-label="Toggle navigation"
+            class="navbar-toggler collapsed">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="basic-navbar-nav">
+            <div class="mr-auto navbar-nav"></div>
+            <div class="navbar-nav">
+                <div class="dropdown nav-item">
+                    <a aria-haspopup="true" aria-expanded="false" href="#" class="dropdown-toggle nav-link"
+                        role="button">Welcome,
+                        New User</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="row" style="position: absolute; bottom: 80px; left: 0px; right: 0px; top: 60px; overflow: auto;">
+        <!--Left Nav-->
+        <div class="px-3 py-4 shadow bg-secondary col-md-2">
+        </div>
+        ​
+        <!--Main-->
+        <div class="col-sm-8">
+            ​
+            <br>
+            <h1 class="text-center"> Chance that a shot is made </h1>
+            <br>
+            <!-- action should be the url path to the view that renders the template displaying the results -->
+            <div class="center">
+                <div class="container">
+                    <form action="/addresults/" method="POST" class="center" style=" width: 500px">
+                        <div class="row">
+                            <div class="col-5">
+                                {% csrf_token %}
+                                <label for="category">Location:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="LOCATION" name="LOCATION" placeholder="Location">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">PERIOD:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="PERIOD" name="PERIOD" placeholder="PERIOD">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">SHOT_CLOCK:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="SHOT_CLOCK" name="SHOT_CLOCK" placeholder="SHOT_CLOCK">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">TOUCH_TIME:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="TOUCH_TIME" name="TOUCH_TIME" placeholder="TOUCH_TIME">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">SHOT_DIST:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="SHOT_DIST" name="SHOT_DIST" placeholder="SHOT_DIST">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">PTS_TYPE:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="PTS_TYPE" name="PTS_TYPE" placeholder="PTS_TYPE">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">CLOSEST_DEFENDER:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="CLOSEST_DEFENDER" name="CLOSEST_DEFENDER"
+                                    placeholder="CLOSEST_DEFENDER">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">CLOSEST_DEFENDER_PLAYER_ID:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="CLOSEST_DEFENDER_PLAYER_ID" name="CLOSEST_DEFENDER_PLAYER_ID"
+                                    placeholder="CLOSEST_DEFENDER_PLAYER_ID">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">CLOSE_DEF_DIST:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="CLOSE_DEF_DIST" name="CLOSE_DEF_DIST"
+                                    placeholder="CLOSE_DEF_DIST">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">FGM:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="FGM" name="FGM" placeholder="FGM">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">player_name:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="player_name" name="player_name" placeholder="player_name">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">player_id:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="player_id" name="player_id" placeholder="player_id">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">Player_Team:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="Player_Team" name="Player_Team" placeholder="Player_Team">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">Defender_Team:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="Defender_Team" name="Defender_Team" placeholder="Defender_Team">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">Month:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="Month" name="Month" placeholder="Month">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">GAME_CLOCK_TOTAL_SECONDS:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="GAME_CLOCK_TOTAL_SECONDS" name="GAME_CLOCK_TOTAL_SECONDS"
+                                    placeholder="GAME_CLOCK_TOTAL_SECONDS">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">DRIBBLEScr:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="DRIBBLEScr" name="DRIBBLEScr" placeholder="DRIBBLEScr">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="category">SHOT_NUMBERln:</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" id="SHOT_NUMBERln" name="SHOT_NUMBERln" placeholder="SHOT_NUMBERln">
+                            </div>
+                        </div>
+
+                        <input type="submit" name=Submit value="Submit" class="center">
+                    </form method="post">
+                </div>
+            </div>
+            ​
+        </div>
+        ​
+        ​
+        <!--Right Nav-->
+        <div class="px-3 py-4 shadow bg-secondary col-md-2">
+            <div>
+                <br>
+                <a class="btn btn-primary" style="width: 90%; margin-bottom: 0px; color: black" href="/nbahome/">
+                    Go Back to Home Page
+                </a>
+            </div>
+            <div>
+                <br>
+                <a class="btn btn-primary" style="width: 90%; margin-bottom: 0px; color: black" href="/prediction/">
+                    Make Another Prediction
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--Footer-->
+    <div class="flex-grow-0 flex-shrink-0 shadow-sm row no-gutters"
+        style="position: absolute; bottom: 0px; left: 0px; right: 0px; height: 80px;">
+        <div class="px-0 py-0 bg-primary col">
+            <footer>
+                ​<div class="text-center mt-5">
+                    <p>© NBAShots </p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    ​
+</body>
+​
+
+</html>
