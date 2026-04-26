@@ -1,0 +1,21 @@
+# Secrets
+.env
+*.env.local
+kaggle.json
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Data and models (large files; download/regenerate as needed)
+data/
+models/
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
