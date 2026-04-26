@@ -1,0 +1,15 @@
+{
+  "feature_order": [
+    "Age",
+    "G",
+    "MP",
+    "OWS",
+    "DWS",
+    "WS"
+  ],
+  "target": "log1p(Salary in USD)",
+  "training_years": [
+    1991,
+    2017
+  ]
+}

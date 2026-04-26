@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "api/predict_shot.py": {
+      "includeFiles": "models/shot_model.pkl",
+      "memory": 1024,
+      "maxDuration": 10
+    },
+    "api/predict_salary.py": {
+      "includeFiles": "models/agent_model.pkl",
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  }
+}
